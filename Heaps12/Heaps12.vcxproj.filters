@@ -24,12 +24,18 @@
     <ClCompile Include="cItem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="cPQueueTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cPQueue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cPQueueTest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,16 +1,25 @@
 #pragma once
+#include <vector>
+#include <algorithm>
 #include "cItem.h"
 
 class cPQueue
 {
 private:
 protected:
-	cItem* m_ptrRoot = nullptr;
-	int m_NumOfNodes = 0;
+	//cItem* m_ptrRoot = nullptr;
+	//int m_NumOfNodes = 0;
 
 
-	void Swap(cItem* _child, cItem* _parent);
-	void HeapSort();
+	//void Swap(cItem* _child, cItem* _parent);
+	//void HeapSort();
+
+	//bool Equals(cItem* _item1, cItem* _item2);
+	//bool IsGreater(cItem* _item1, cItem* _item2);
+
+	//void Push(cItem* _itemToBePushed, cItem* _currentNode);
+
+	std::vector<cItem> m_Heap;
 
 public:
 	cPQueue();
@@ -32,10 +41,8 @@ public:
 	/// Num of items in the queue
 	/// </summary>
 	/// <returns></returns>
-	inline int GetLength()
-	{
-		return m_NumOfNodes;
-	}
+	int GetLength();
+
 
 	/// <summary>
 	/// Returns the priority of the item at the front of the queue without popping it
@@ -43,4 +50,3 @@ public:
 	/// <returns></returns>
 	float PriorityFront();
 };
-
