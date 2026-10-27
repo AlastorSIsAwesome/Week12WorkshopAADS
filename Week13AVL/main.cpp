@@ -39,6 +39,6 @@ int main()
 	}
 
 	//end of the test
-	delete pAVL;
+	//delete pAVL; // BUG HAPPENS WHEN TRY TO DELETE
 	std::cout << "End of test program" << std::endl;
 }
