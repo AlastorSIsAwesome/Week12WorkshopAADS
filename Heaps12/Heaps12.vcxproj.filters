@@ -13,30 +13,36 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Week 12">
+      <UniqueIdentifier>{c9dfd63e-634a-4253-bed5-7b504d7b5cdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Week 12">
+      <UniqueIdentifier>{6418921d-937f-4ea0-8c45-3ddd1de91f06}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cPQueue.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="cItem.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Week 12</Filter>
+    </ClCompile>
+    <ClCompile Include="cPQueue.cpp">
+      <Filter>Source Files\Week 12</Filter>
     </ClCompile>
     <ClCompile Include="cPQueueTest.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Week 12</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="cPQueue.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="cItem.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Week 12</Filter>
+    </ClInclude>
+    <ClInclude Include="cPQueue.h">
+      <Filter>Header Files\Week 12</Filter>
     </ClInclude>
     <ClInclude Include="cPQueueTest.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Week 12</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

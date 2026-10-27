@@ -4,4 +4,5 @@
     <Platform Name="x86" />
   </Configurations>
   <Project Path="Heaps12/Heaps12.vcxproj" Id="10c3c41a-81e8-4a6d-9481-bf51ec0ff4a1" />
+  <Project Path="Week13AVL/Week13AVL.vcxproj" Id="ff0a4c5b-b848-4f5b-9cd4-7710806fc44e" />
 </Solution>
