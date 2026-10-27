@@ -7,13 +7,6 @@
 
 #include "cAVLTree.h"
 
-cAVLTree::cAVLTree()
-{
-}
-
-cAVLTree::~cAVLTree()
-{
-}
 
 int cAVLTree::GetBalanceFactor(cNode* _ptrRoot)
 {
@@ -88,14 +81,14 @@ cNode* cAVLTree::RotateRightLeft(cNode* _ptrRoot)
 		return nullptr;
 	}
 
-	// rotate the right subtree of the root node right right
-	_ptrRoot->SetRightChild(RotateRight(_ptrRoot->GetRightChild()));
+	cNode* ptrRightChild = _ptrRoot->GetRightChild();
 
-	// rotate left the root node
-	cNode* ptrNewRoot = RotateLeft(_ptrRoot);
+	ptrRightChild = RotateRight(ptrRightChild);
+	_ptrRoot->SetRightChild(ptrRightChild);
+
 
 	// return new root node
-	return ptrNewRoot;
+	return RotateLeft(_ptrRoot);
 }
 
 cNode* cAVLTree::RotateLeftRight(cNode* _ptrRoot)
@@ -105,21 +98,26 @@ cNode* cAVLTree::RotateLeftRight(cNode* _ptrRoot)
 		return nullptr;
 	}
 
-	// rotate the left subtree of the root node left left
-	_ptrRoot->SetLeftChild(RotateLeft(_ptrRoot->GetLeftChild()));
+	cNode* ptrLeftChild = _ptrRoot->GetLeftChild();
+	ptrLeftChild = RotateLeft(ptrLeftChild);
+	_ptrRoot->SetLeftChild(ptrLeftChild);
 
-	// rotate right the root node
-	cNode* ptrNewRoot = RotateRight(_ptrRoot);
 
 	// return new root node
-	return ptrNewRoot;
+	return RotateRight(_ptrRoot);
 }
 
 
 
 void cAVLTree::InsertNode(cNode* pInsert, cNode* pStartNode)
 {
-	if (pStartNode->Equal(pInsert->GetKey()))
+	if (!mpRoot)
+	{
+		mpRoot = pInsert;
+		miSize++;
+		return;
+	}
+	else if (pStartNode->Equal(pInsert->GetKey()))
 	{
 		return;
 	}
@@ -132,7 +130,11 @@ void cAVLTree::InsertNode(cNode* pInsert, cNode* pStartNode)
 		}
 		else //left child point is not null, so recurse down left subtree
 		{
-			InsertNode(pInsert, pStartNode->GetLeftChild());
+			cNode* pLeftChild = pStartNode->GetLeftChild();
+			InsertNode(pInsert, pLeftChild);
+
+			// reset child of parent node
+			pStartNode->SetLeftChild(pLeftChild);
 		}
 	}
 	else //insert key must be greater
@@ -142,10 +144,39 @@ void cAVLTree::InsertNode(cNode* pInsert, cNode* pStartNode)
 			pStartNode->SetRightChild(pInsert);
 			miSize++;
 		}
-		else //right child pointer is no null, so recurse down right subtree
+		else //right child pointer is not null, so recurse down right subtree
 		{
+			cNode* pRightChild = pStartNode->GetLeftChild();
 			InsertNode(pInsert, pStartNode->GetRightChild());
+
+			//reset child of parent node
+			pStartNode->SetRightChild(pRightChild);
 		}
+	}
+
+
+	int RootBalanceFactor = GetBalanceFactor(pStartNode);
+	int RightBalanceFactor = GetBalanceFactor(pStartNode->GetRightChild());
+	int LeftBalanceFactor = GetBalanceFactor(pStartNode->GetLeftChild());
+
+	if (RootBalanceFactor > 1 && LeftBalanceFactor >= 0)
+	{
+		pStartNode = RotateRight(pStartNode);
+	}
+	
+	if (RootBalanceFactor < -1 && RightBalanceFactor <= 0)
+	{
+		pStartNode = RotateLeft(pStartNode);
+	}
+
+	if (RootBalanceFactor > 1 && LeftBalanceFactor < 0)
+	{
+		pStartNode = RotateLeftRight(pStartNode);
+	}
+
+	if (RootBalanceFactor < -1 && RightBalanceFactor > 0)
+	{
+		pStartNode = RotateRightLeft(pStartNode);
 	}
 }
 
@@ -216,15 +247,9 @@ cNode* cAVLTree::GetLeftmost(cNode* pStartNode)
 
 void cAVLTree::InsertNode(cNode* pInsert)
 {
-	if (!mpRoot)
-	{
-		mpRoot = pInsert;
-		miSize++;
-	}
-	else
-	{
-		InsertNode(pInsert, mpRoot);
-	}
+
+	InsertNode(pInsert, mpRoot);
+
 }
 
 
