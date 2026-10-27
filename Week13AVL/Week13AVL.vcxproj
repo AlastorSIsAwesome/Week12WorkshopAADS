@@ -139,11 +139,15 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="cItem.cpp" />
+    <ClCompile Include="cAVLTree.cpp" />
+    <ClCompile Include="cBinarySearchTree.cpp" />
+    <ClCompile Include="cNode.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="cItem.h" />
+    <ClInclude Include="cAVLTree.h" />
+    <ClInclude Include="cBinarySearchTree.h" />
+    <ClInclude Include="cNode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
